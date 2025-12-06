@@ -13,27 +13,16 @@ export default function FlodeskPopup() {
     sessionStorage.removeItem("fd-form-6932b5676e4686bdd8985b2c-dismissed");
 
     const loadPopup = () => {
+      sessionStorage.removeItem("fd-form-6932b5676e4686bdd8985b2c-dismissed");
+      sessionStorage.removeItem(
+        "fd-form-6932b5676e4686bdd8985b2c-dismissed-count"
+      );
+
       window.fd?.("form", {
         formId: "6932b5676e4686bdd8985b2c",
         successRedirectUrl: "/",
         inPlace: false,
       });
-
-      window.fd?.("form:submit:success", () => {
-        window.location.href = "/";
-      });
-
-      // ⭐ Detect popup close via dismissed flag (100% reliable)
-      const dismissedCheck = setInterval(() => {
-        const dismissed = sessionStorage.getItem(
-          "fd-form-6932b5676e4686bdd8985b2c-dismissed"
-        );
-
-        if (dismissed === "true") {
-          clearInterval(dismissedCheck);
-          window.location.href = "/";
-        }
-      }, 300);
     };
 
     // Load script once

@@ -105,6 +105,15 @@ export default function ComingSoon() {
               </div>
             </div>
 
+            {/* Coming Image */}
+            <div className="flex justify-center mt-6">
+              <img
+                src="/assets/images/comingg.png"
+                alt="Coming Soon"
+                className="w-full max-w-md rounded-xl shadow-lg shadow-purple-900/40"
+              />
+            </div>
+
             {/* Feature Grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 max-w-5xl mx-auto">
               {features.map((feature, index) => {
@@ -147,7 +156,7 @@ export default function ComingSoon() {
 
               {/* CLICK → /subscribe */}
               <div className="flex justify-center">
-                <a href="/subscribe">
+                <a href="https://rgm.myflodesk.com/fvel9d74gv">
                   <button className="group relative px-16 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full font-semibold text-lg tracking-wide shadow-lg shadow-purple-900/50 hover:shadow-xl hover:shadow-purple-800/60 transition-all duration-300 hover:scale-105 hover:from-purple-500 hover:to-pink-500">
                     <span className="relative z-10 flex items-center gap-2">
                       Notify Me
@@ -156,6 +165,7 @@ export default function ComingSoon() {
                       </span>
                     </span>
                   </button>
+                  ¯¸
                 </a>
               </div>
 
