@@ -9,46 +9,70 @@ declare global {
 
 export default function FlodeskPopup() {
   useEffect(() => {
+    // Always reset dismissed state so popup can reopen
+    sessionStorage.removeItem("fd-form-6932b5676e4686bdd8985b2c-dismissed");
+
     const loadPopup = () => {
-      // Initialize TRUE popup mode
       window.fd?.("form", {
         formId: "6932b5676e4686bdd8985b2c",
-        successRedirectUrl: "/",   // redirect after submit
-        inPlace: false,            // ensures popup mode
+        successRedirectUrl: "/",
+        inPlace: false,
       });
 
-      // Extra safety listener
       window.fd?.("form:submit:success", () => {
         window.location.href = "/";
       });
+
+      // ⭐ Detect popup close via dismissed flag (100% reliable)
+      const dismissedCheck = setInterval(() => {
+        const dismissed = sessionStorage.getItem(
+          "fd-form-6932b5676e4686bdd8985b2c-dismissed"
+        );
+
+        if (dismissed === "true") {
+          clearInterval(dismissedCheck);
+          window.location.href = "/";
+        }
+      }, 300);
     };
 
     // Load script once
-    if (!document.querySelector('script[src*="flodesk"]')) {
+    const existing = document.querySelector('script[src*="flodesk"]');
+    if (!existing) {
       (function (w, d, t, h, s, n) {
         w.FlodeskObject = n;
-        const fn = function () {
-          (w[n].q = w[n].q || []).push(arguments);
+
+        const fn = function (...args: any[]) {
+          (w[n].q = w[n].q || []).push(args);
         };
         w[n] = w[n] || fn;
 
-        const f = d.getElementsByTagName(t)[0];
-        const v = "?v=" + Math.floor(Date.now() / (120 * 1000)) * 60;
+        const firstScript = d.getElementsByTagName(t)[0];
+        const v = `?v=${Math.floor(Date.now() / (120 * 1000)) * 60}`;
 
+        // module script
         const sm = d.createElement(t) as HTMLScriptElement;
         sm.async = true;
         sm.type = "module";
-        sm.src = h + s + ".mjs" + v;
+        sm.src = `${h}${s}.mjs${v}`;
         sm.onload = loadPopup;
-        f.parentNode?.insertBefore(sm, f);
+        firstScript.parentNode?.insertBefore(sm, firstScript);
 
+        // nomodule fallback
         const sn = d.createElement(t) as HTMLScriptElement;
         sn.async = true;
         sn.noModule = true;
-        sn.src = h + s + ".js" + v;
+        sn.src = `${h}${s}.js${v}`;
         sn.onload = loadPopup;
-        f.parentNode?.insertBefore(sn, f);
-      })(window, document, "script", "https://assets.flodesk.com", "/universal", "fd");
+        firstScript.parentNode?.insertBefore(sn, firstScript);
+      })(
+        window,
+        document,
+        "script",
+        "https://assets.flodesk.com",
+        "/universal",
+        "fd"
+      );
     } else {
       loadPopup();
     }

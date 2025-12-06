@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Book, Music, Headphones, Library, ListMusic, Award, Users, Heart } from "lucide-react";
+import {
+  Book,
+  Music,
+  Headphones,
+  Library,
+  ListMusic,
+  Award,
+  Users,
+  Heart,
+} from "lucide-react";
 
 export default function ComingSoon() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -31,40 +40,37 @@ export default function ComingSoon() {
     { icon: Library, title: "Library", desc: "Your collection" },
     { icon: ListMusic, title: "Playlists", desc: "Curated journeys" },
     { icon: Award, title: "Rewards", desc: "Spiritual milestones" },
-    { icon: Users, title: "Community", desc: "Connect & share" }
+    { icon: Users, title: "Community", desc: "Connect & share" },
   ];
 
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-hidden">
-      
       {/* Refined Background */}
       <div className="absolute inset-0 overflow-hidden">
-        <div 
+        <div
           className="absolute w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-3xl transition-all duration-700"
           style={{
-            top: '15%',
+            top: "15%",
             left: `${15 + mousePosition.x * 0.015}%`,
           }}
         />
-        <div 
+        <div
           className="absolute w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-3xl transition-all duration-700"
           style={{
-            bottom: '15%',
+            bottom: "15%",
             right: `${15 + mousePosition.y * 0.015}%`,
           }}
         />
-        
+
         {/* Subtle grid overlay */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(139,92,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.03)_1px,transparent_1px)] bg-[size:100px_100px]" />
       </div>
 
       {/* Main Content */}
       <div className="relative z-10 flex flex-col min-h-screen">
-        
         {/* Hero Section */}
         <main className="flex-1 flex items-center justify-center px-6 py-20">
           <div className="max-w-6xl w-full text-center space-y-16">
-            
             {/* Logo/Title */}
             <div className="space-y-8">
               <div className="inline-block">
@@ -74,6 +80,15 @@ export default function ComingSoon() {
                 >
                   KATHĀ SINDHU
                 </h1>
+
+                {/* NEW LINE */}
+                <p
+                  className="text-xl md:text-2xl text-purple-200/80 tracking-wide mt-4"
+                  style={{ fontFamily: "'El Messiri', sans-serif" }}
+                >
+                  — By HH Radhanath Swami
+                </p>
+
                 <div className="h-0.5 w-full bg-gradient-to-r from-transparent via-purple-400/50 to-transparent mt-6" />
               </div>
 
@@ -99,14 +114,17 @@ export default function ComingSoon() {
                     key={index}
                     className="group relative"
                     style={{
-                      animation: `fadeInUp 0.5s ease-out ${index * 0.08}s both`
+                      animation: `fadeInUp 0.5s ease-out ${index * 0.08}s both`,
                     }}
                   >
                     <div className="absolute -inset-0.5 bg-gradient-to-br from-purple-600/20 to-pink-600/20 rounded-xl opacity-0 group-hover:opacity-100 blur transition duration-400" />
                     <div className="relative h-full p-5 bg-slate-900/60 backdrop-blur-md rounded-xl border border-purple-500/20 hover:border-purple-400/40 transition-all duration-300 hover:transform hover:-translate-y-1">
                       <div className="flex justify-center mb-3">
                         <div className="p-2.5 bg-gradient-to-br from-purple-500/15 to-pink-500/15 rounded-lg border border-purple-400/20 transform group-hover:scale-105 transition-transform duration-300">
-                          <Icon className="w-7 h-7 text-purple-300" strokeWidth={1.5} />
+                          <Icon
+                            className="w-7 h-7 text-purple-300"
+                            strokeWidth={1.5}
+                          />
                         </div>
                       </div>
                       <h3 className="text-base font-semibold text-purple-100 mb-1.5">
@@ -126,19 +144,21 @@ export default function ComingSoon() {
               <p className="text-xl md:text-2xl text-purple-200/70 font-light tracking-wide italic">
                 Beautiful things unfold slowly…
               </p>
-              
+
               {/* CLICK → /subscribe */}
               <div className="flex justify-center">
                 <a href="/subscribe">
                   <button className="group relative px-16 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full font-semibold text-lg tracking-wide shadow-lg shadow-purple-900/50 hover:shadow-xl hover:shadow-purple-800/60 transition-all duration-300 hover:scale-105 hover:from-purple-500 hover:to-pink-500">
                     <span className="relative z-10 flex items-center gap-2">
                       Notify Me
-                      <span className="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
+                      <span className="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        →
+                      </span>
                     </span>
                   </button>
                 </a>
               </div>
-              
+
               <p className="text-purple-300/50 text-sm">
                 Join thousands waiting for the spiritual journey
               </p>
@@ -150,18 +170,35 @@ export default function ComingSoon() {
         <footer className="relative py-8 px-6 border-t border-purple-500/10 backdrop-blur-sm">
           <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-purple-300/50 text-sm">
-              © 2024 Kathā Sindhu. All rights reserved.
+              © 2025-2026 Kathā Sindhu. All rights reserved.
             </div>
             <div className="flex gap-8">
-              {['Twitter', 'Instagram', 'YouTube'].map((social) => (
-                <a
-                  key={social}
-                  href="#"
-                  className="text-purple-300/50 hover:text-purple-300 transition-colors duration-300 text-sm font-medium"
-                >
-                  {social}
-                </a>
-              ))}
+              <a
+                href="https://x.com/radhanathswami"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-purple-300/50 hover:text-purple-300 transition-colors duration-300 text-sm font-medium"
+              >
+                Twitter
+              </a>
+
+              <a
+                href="https://www.instagram.com/radhanathswami?igsh=a3ZiN2o4dGtlYnM1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-purple-300/50 hover:text-purple-300 transition-colors duration-300 text-sm font-medium"
+              >
+                Instagram
+              </a>
+
+              <a
+                href="https://youtube.com/@radhanathswami?si=i04K3gTXjVTq1_AB"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-purple-300/50 hover:text-purple-300 transition-colors duration-300 text-sm font-medium"
+              >
+                YouTube
+              </a>
             </div>
           </div>
         </footer>
