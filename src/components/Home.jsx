@@ -193,7 +193,7 @@ export default function ComingSoon() {
               </a>
 
               <a
-                href="https://www.instagram.com/radhanathswami?igsh=a3ZiN2o4dGtlYnM1"
+                href="https://www.instagram.com/radhanathswami"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-purple-300/50 hover:text-purple-300 transition-colors duration-300 text-sm font-medium"
