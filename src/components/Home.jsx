@@ -160,12 +160,9 @@ export default function ComingSoon() {
                   <button className="group relative px-16 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full font-semibold text-lg tracking-wide shadow-lg shadow-purple-900/50 hover:shadow-xl hover:shadow-purple-800/60 transition-all duration-300 hover:scale-105 hover:from-purple-500 hover:to-pink-500">
                     <span className="relative z-10 flex items-center gap-2">
                       Notify Me
-                      <span className="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        →
-                      </span>
+                      <span className="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                     </span>
                   </button>
-                  ¯¸
                 </a>
               </div>
 
